@@ -1,0 +1,86 @@
+﻿@model AvcolMusicIdentity.Models.Class
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Class</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Date)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Date)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.StartTime)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.StartTime)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.EndTime)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.EndTime)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Student)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Student.FirstName)
+            @Html.DisplayFor(model => model.Student.Surname)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Teacher)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Teacher.TeacherID)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Student.MusicTimetables)
+        </dt>
+        <dd class="col-sm-10">
+            <table class="table">
+                <tr>
+                    <th>Music Teacher</th>
+                    <th>Date</th>
+                    <th>Start Time</th>
+                    <th>End Time</th>
+                </tr>
+                @foreach (var item in Model.Student.MusicTimetables)
+                {
+                    @foreach (var b in item.Group.Lessons)
+                    {
+                        @if (b.StartTime < Model.EndTime && b.EndTime > Model.StartTime)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => b.Group.TeacherID)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => b.Date)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => b.StartTime)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => b.EndTime)
+                                </td>
+                            </tr>
+                        }
+                    }
+
+                }
+            </table>
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.ClassID">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

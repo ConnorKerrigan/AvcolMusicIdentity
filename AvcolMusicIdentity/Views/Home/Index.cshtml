@@ -1,0 +1,42 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="bg-light p-5 rounded-lg m-3">
+    <h1>Avcol Music</h1>
+    <p>
+        Use this website to find organised information about itinerant music lessons at Avondale College.
+    </p>
+</div>
+<div class="row">
+    <div class="col-md-4">
+        <h2>Lessons</h2>
+        <p>Find the dates and times of all music lessons.</p>
+        <p><a class="btn btn-default" asp-area="" asp-controller="Lessons" asp-action="Index">View lessons &raquo;</a></p>
+    </div>
+    <div class="col-md-4">
+        <h2>Teachers</h2>
+        <p>View the classes in which students will be absent for each teacher.</p>
+        <p><a class="btn btn-default" asp-area="" asp-controller="Teachers" asp-action="Index">View classes &raquo;</a></p>
+    </div>
+    <div class="col-md-4">
+        <h2>Student</h2>
+        <p>View all students taking itinerant music lessons at Avondale College.</p>
+        <p><a class="btn btn-default" asp-area="" asp-controller="Students" asp-action="Index">View students &raquo;</a></p>
+    </div>
+    <div class="col-md-4">
+        <h2>Groups</h2>
+        <p>See each music group, what instrument is taught, and who teaches.</p>
+        <p><a class="btn btn-default" asp-area="" asp-controller="Groups" asp-action="Index">View groups &raquo;</a></p>
+    </div>
+    <div class="col-md-4">
+        <h2>Classes</h2>
+        <p>View classes in which students will be absent.</p>
+        <p><a class="btn btn-default" asp-area="" asp-controller="Classes" asp-action="Index">View classes &raquo;</a></p>
+    </div>
+    <div class="col-md-4">
+        <h2>Music Timetables</h2>
+        <p>See which students are in which groups</p>
+        <p><a class="btn btn-default" asp-area="" asp-controller="MusicTimetables" asp-action="Index">View Timetables &raquo;</a></p>
+    </div>
+</div>
