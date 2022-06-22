@@ -7,7 +7,7 @@ var connectionString = builder.Configuration.GetConnectionString("MusicContextCo
 builder.Services.AddDbContext<MusicContext>(options =>
     options.UseSqlServer(connectionString));;
 
-builder.Services.AddDefaultIdentity<ACUser>(options => options.SignIn.RequireConfirmedAccount = true)
+builder.Services.AddDefaultIdentity<ACUser>(options => options.SignIn.RequireConfirmedAccount = false)
     .AddEntityFrameworkStores<MusicContext>();;
 
 // Add services to the container.

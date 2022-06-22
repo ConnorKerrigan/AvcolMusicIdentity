@@ -9,5 +9,7 @@ namespace AvcolMusicIdentity.Areas.Identity.Data;
 // Add profile data for application users by adding properties to the ACUser class
 public class ACUser : IdentityUser
 {
+    public string FirstName { get; set; }
+    public string Surname { get; set; }
 }
 
