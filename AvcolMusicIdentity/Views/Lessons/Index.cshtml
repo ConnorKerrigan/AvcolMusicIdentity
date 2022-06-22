@@ -9,12 +9,8 @@
 <form asp-action="Index" method="get">
     <div class="form-actions no-color">
         <p>
-            Group: <div class="input-group mb-3">
-                <div class="input-group-prepend">
-                    <input type="submit" value="Search" class="btn btn-outline-dark">
-                </div>
-                <input type="number" name="SearchInt" min="0" value="2" class="form-control" width="auto">
-            </div> |
+            Find by name: <input type="text" name="SearchString" value="@ViewData["CurrentFilter"]" />
+            <input type="submit" value="Search" class="btn btn-default" /> |
             <a asp-action="Index">Back to Full List</a>
         </p>
     </div>
