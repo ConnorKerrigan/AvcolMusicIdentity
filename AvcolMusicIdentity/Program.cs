@@ -16,6 +16,11 @@ builder.Services.AddDefaultIdentity<ACUser>(options => options.SignIn.RequireCon
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
+builder.Services.AddAuthorization(options =>
+{
+    options.AddPolicy("teacherPolicy", builder => builder.RequireRole("Admin", "Teacher"));
+    options.AddPolicy("studentPolicy", builder => builder.RequireRole("Admin", "Teacher", "Student"));
+});
 
 var app = builder.Build();
 
