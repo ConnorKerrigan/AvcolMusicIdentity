@@ -9,9 +9,10 @@ var connectionString = builder.Configuration.GetConnectionString("MusicContextCo
 builder.Services.AddDbContext<MusicContext>(options =>
     options.UseSqlServer(connectionString));;
 
-builder.Services.AddDefaultIdentity<ACUser>(options => options.SignIn.RequireConfirmedAccount = false)
-    .AddRoles<IdentityRole>()
-    .AddEntityFrameworkStores<MusicContext>();;
+builder.Services.AddIdentity<ACUser, IdentityRole>(options => options.SignIn.RequireConfirmedAccount = false)
+                 .AddDefaultUI()
+                 .AddEntityFrameworkStores<MusicContext>()
+                 .AddDefaultTokenProviders();
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();

@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using AvcolMusicIdentity.Areas.Identity.Data;
 using AvcolMusicIdentity.Models;
 
+
 namespace AvcolMusicIdentity.Views.Students
 {
     public class StudentsController : Controller
@@ -106,14 +107,17 @@ namespace AvcolMusicIdentity.Views.Students
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Surname,FirstName,Year,HomeRoom")] Student student)
         {
+
             try
             {
                 if (ModelState.IsValid)
                 {
+
                     _context.Add(student);
                     await _context.SaveChangesAsync();
                     return RedirectToAction(nameof(Index));
                 }
+                Console.WriteLine("not valid??");
             }
             catch(DbUpdateException)
             {
