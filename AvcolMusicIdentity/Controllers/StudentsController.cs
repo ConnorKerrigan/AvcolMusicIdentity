@@ -1,15 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.EntityFrameworkCore;
-using AvcolMusicIdentity.Areas.Identity.Data;
+﻿using AvcolMusicIdentity.Areas.Identity.Data;
 using AvcolMusicIdentity.Models;
+using Microsoft.AspNetCore.Mvc;
 
-
-namespace AvcolMusicIdentity.Views.Students
+namespace AvcolMusicIdentity.Controllers
 {
     public class StudentsController : Controller
     {
@@ -105,19 +98,19 @@ namespace AvcolMusicIdentity.Views.Students
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Surname,FirstName,Year,HomeRoom")] Student student)
+        public async Task<IActionResult> Create([Bind("StudentID,Surname,FirstName,Year,HomeRoom")] Student student)
         {
 
             try
             {
-                if (ModelState.IsValid)
+                if (!ModelState.IsValid)
                 {
-
+                    
                     _context.Add(student);
                     await _context.SaveChangesAsync();
                     return RedirectToAction(nameof(Index));
                 }
-                Console.WriteLine("not valid??");
+             
             }
             catch(DbUpdateException)
             {
@@ -156,7 +149,7 @@ namespace AvcolMusicIdentity.Views.Students
                 return NotFound();
             }
 
-            if (ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
                 try
                 {
